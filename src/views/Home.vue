@@ -1,18 +1,43 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <UserList />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import UserList from '../components/UserList.vue'
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    UserList
+  },
+  data: () => ({
+    patients: []
+  }),
+  mounted() {
+   
+
+
+    //FORMA EN LA QUE NO SE ACTUALIZA SOLA
+
+    // Firebase.firestore()
+    //   .collection('pacientes')
+    //   .get()
+    //   .then((collection) => {
+    //     collection.forEach((document) => {
+    //       this.pacientes.push({ id: document.id, ...document.data() })
+    //     })
+    //   })
+
+    // // SE ACTUALIZA LA BASE DE DATOS EN LA VISTA AUTOMATICAMENTE, ESTILO LIVE SERVER
+    // Firebase.firestore()
+    //   .collection('pacientes')
+    //   .onSnapshot((querySnapshot) => {
+    //     this.pacientes = []
+    //     querySnapshot.forEach((document) => {
+    //       this.pacientes.push({ id: document.id, ...document.data() })
+    //     })
+    //   })
   }
 }
 </script>
